@@ -9,8 +9,8 @@ import (
 	opentracing2 "github.com/micro/go-plugins/wrapper/trace/opentracing/v2"
 	"github.com/opentracing/opentracing-go"
 	"log"
-	"product/common"
-	"product/proto/product"
+	"github.com/qyh794/microMall/product/common"
+	"github.com/qyh794/microMall/product/proto/product"
 )
 
 func main() {
