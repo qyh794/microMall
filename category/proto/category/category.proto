@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package go.micro.service.category;
+
+service Category {
+    rpc CreateCategory(CategoryRequest) returns (CreateCategoryResponse) {}
+    rpc UpdateCategory(CategoryRequest) returns (UpdateCategoryResponse) {}
+    rpc DeleteCategoryByID(DeleteCategoryRequest) returns(DeleteCategoryResponse) {}
+    rpc FindCategoryByName(FindByNameRequest) returns(CategoryResponse) {}
+    rpc FindCategoryByID(FindByIDRequest) returns(CategoryResponse) {}
+    rpc FindCategoryByLevel(FindByLevelRequest) returns(FindAllResponse) {}
+    rpc FindCategoryByParent(FindByParentRequest) returns(FindAllResponse) {}
+    rpc FindAllCategory(FindAllRequest) returns(FindAllResponse) {}
+}
+
+message CategoryRequest {
+    string categoryName = 1;
+    uint32 categoryLevel = 2;
+    int64 categoryParent = 3;
+    string categoryImage = 4;
+    string categoryDescription = 5;
+}
+
+message CreateCategoryResponse {
+    string message = 1;
+    int64 categoryId = 2;
+}
+
+message UpdateCategoryResponse {
+    string message = 1;
+}
+
+message DeleteCategoryRequest {
+    int64 categoryId = 1;
+}
+
+message DeleteCategoryResponse {
+    string message = 1;
+}
+
+message FindByNameRequest {
+    string categoryName = 1;
+}
+
+message CategoryResponse {
+    int64 id = 1;
+    string categoryName = 2;
+    uint32 categoryLevel = 3;
+    int64 categoryParent = 4;
+    string categoryImages = 5;
+    string categoryDescription = 6;
+}
+
+message FindByIDRequest {
+    int64 categoryId = 1;
+}
+
+message FindByLevelRequest {
+    uint32 level = 1;
+}
+
+message FindAllResponse {
+    repeated CategoryResponse category = 1;
+}
+
+message FindByParentRequest {
+    int64 parentId = 1;
+}
+
+message FindAllRequest {
+
+}
+
+
