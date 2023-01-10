@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package go.micro.service.cart;
+
+service Cart {
+	rpc AddCart(RequestAddCartInfo) returns (ResponseAddCart) {}
+	rpc CleanCart(RequestCleanCart) returns (Response){}
+	rpc Incr(RequestItem) returns (Response){}
+	rpc Decr(RequestItem) returns (Response){}
+	rpc DeleteItemByID (RequestCartID) returns (Response){}
+	rpc GetAll(RequestCartFindAll) returns (ResponseCartAll){}
+}
+
+message RequestAddCartInfo {
+	int64 id = 1;
+	int64 user_id =2;
+	int64 product_id = 3;
+	int64 size_id = 4;
+	int64 num =5;
+}
+
+message ResponseAddCart{
+	int64 cart_id =1;
+	string msg =2;
+}
+
+message RequestCleanCart {
+	int64 user_id =1;
+}
+
+message Response {
+	string msg =1;
+}
+
+message RequestItem {
+	int64 id =1;
+	int64 change_num = 2;
+}
+
+message RequestCartID{
+	int64 id =1;
+}
+
+message RequestCartFindAll {
+	int64 user_id =1;
+}
+
+message ResponseCartAll {
+	repeated RequestAddCartInfo cart_info =1;
+}
